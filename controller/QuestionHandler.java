@@ -7,13 +7,27 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**
- * Created by asuspc on 4/24/2017.
+/**Real Class QuestionHandler
+ * @author Vigor Akbar
+ *
  */
 public class QuestionHandler {
+  /**
+   * Attribut data adalah sebuah array of Question
+   * digunakan untuk menyimpan pertanyaan dari file eksternal
+   */
   Question[] data;
+  /**
+   * Attribut level adalah sebuah integer
+   * digunakan untuk menyimpan level dari Question yang akan di load
+   */
   int level;
 
+  /**
+   * Constructor dengan parameter dari QuestionHandler
+   * Menghidupkan objek QuestionHandler
+   * @param level int adalah level dari Question yang ingin di load
+   */
   QuestionHandler(int level) {
     this.level = level;
     data = new Question[25];
@@ -21,9 +35,21 @@ public class QuestionHandler {
       data[i] = new Question();
     }
   }
+
+  /**
+   * Getter Question dari data
+   * @param i = index dari data yang ingin di ambil
+   * @return Question : Question yabg ingin diambil
+   */
   public Question getData(int i) {
     return data[i];
   }
+
+  /**
+   * Prosedur drawQuestion ini digunakan untuk mengambil Question dari file eksternal
+   * I.S : QuestionHandler terdefinisi
+   * F.S : atribut data berisi question sesuai file eksternal
+   */
   public void drawQuestion() throws IOException {
     if (level == 1) {
       int indeksData = 0;
