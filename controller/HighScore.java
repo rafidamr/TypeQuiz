@@ -50,7 +50,7 @@ public class HighScore {
     * F.S : data pada file eksternal terinput ke HighScore
     */
   public void loadHighScore() throws IOException {
-    BufferedReader br = new BufferedReader(new FileReader("src/model/highscore.txt"));
+    BufferedReader br = new BufferedReader(new FileReader("external_file/highscore.txt"));
     String strLine;
     try {
       int indeksData = 0;

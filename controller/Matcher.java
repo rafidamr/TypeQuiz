@@ -60,6 +60,14 @@ public class Matcher {
   }
 
   /**
+   * Getter dari Score
+   * @return integer : nilai dari score
+   */
+  public int getScore() {
+    return score;
+  }
+
+  /**
    * Setter dari keyAnswer
    * @param keyAnswer : Question yang akan di masukkan ke keyAnswer
    */
@@ -84,14 +92,20 @@ public class Matcher {
     if (keyAnswer.getType() == 1) {
       if (keyAnswer.getJawaban().equals(userAnswer)) {
         score = keyAnswer.getLevel()*10;
+      } else {
+        score = 0;
       }
     } else if (keyAnswer.getType() == 2) {
       if (keyAnswer.getJawaban().equalsIgnoreCase(userAnswer)) {
         score = keyAnswer.getLevel()*10;
+      } else {
+        score = 0;
       }
     } else {
       if (keyAnswer.getJawaban().equals(userAnswer)) {
         score = keyAnswer.getLevel()*10;
+      } else {
+        score = 0;
       }
     }
   }

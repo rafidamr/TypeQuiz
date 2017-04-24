@@ -45,6 +45,14 @@ import java.io.IOException;
     return data[i];
   }
 
+    /**
+     * Setter int dari level
+     * @param level = nilai yang ingin di set kedalam level
+     */
+  public void setLevel(int level) {
+    this.level = level;
+  }
+
   /**
    * Prosedur drawQuestion ini digunakan untuk mengambil Question dari file eksternal
    * I.S : QuestionHandler terdefinisi
@@ -147,7 +155,7 @@ import java.io.IOException;
         } finally {
             br.close();
         }
-        br = new BufferedReader((new FileReader("external_file/Typing2.txt")));
+        br = new BufferedReader((new FileReader("external_file/TypingLvl2.txt")));
         try {
             while ((strLine = br.readLine()) != null) {
                 String tempQuest;
@@ -204,7 +212,7 @@ import java.io.IOException;
       } finally {
         br.close();
       }
-      br = new BufferedReader((new FileReader("external_file/Typing3.txt")));
+      br = new BufferedReader((new FileReader("external_file/TypingLvl3.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
           String tempQuest;
