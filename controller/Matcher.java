@@ -9,17 +9,17 @@ public class Matcher {
   /** Attribut keyAnswer adalah sebuah Question
    * Digunakan untuk mencocokkan jawaban
    */
-  Question keyAnswer;
+  private Question keyAnswer;
   /**
    * Attribut userAnswer adalah sebuah String
    * Berupa input dari user yang akan dicocokkan
    */
-  String userAnswer;
+  private String userAnswer;
   /**
    * Attribut score adalah hasil perolehan score
    * didapat dari pencocokan jawaban dengan kuncinya
    */
-  int score;
+  private int score;
 
   /**
    * Constructor tanpa parameter dari Matcher.

@@ -7,28 +7,28 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-/**Real Class QuestionHandler
- * @author Vigor Akbar
- *
- */
-public class QuestionHandler {
+  /**Real Class QuestionHandler
+  * @author Vigor Akbar
+  *
+  */
+  public class QuestionHandler {
   /**
    * Attribut data adalah sebuah array of Question
    * digunakan untuk menyimpan pertanyaan dari file eksternal
    */
-  Question[] data;
+  private Question[] data;
   /**
    * Attribut level adalah sebuah integer
    * digunakan untuk menyimpan level dari Question yang akan di load
    */
-  int level;
+  private int level;
 
   /**
    * Constructor dengan parameter dari QuestionHandler
    * Menghidupkan objek QuestionHandler
    * @param level int adalah level dari Question yang ingin di load
    */
-  QuestionHandler(int level) {
+  public QuestionHandler(int level) {
     this.level = level;
     data = new Question[25];
     for (int i = 0; i < 25; i++) {
