@@ -1,0 +1,10 @@
+Typo|Typo
+Live|Live
+Doll|Doll
+Kick|Kick
+Swim|Swim
+Talk|Talk
+Jump|Jump
+Push|Push
+Ping|Ping
+Zonk|Zonk
