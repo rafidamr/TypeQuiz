@@ -76,10 +76,11 @@ public class Matcher {
   }
 
   /**
-   * Function countScore mengembalikan nilai integer berupa hasil perhitungan score
-   * @return int : Hasil perhitungan skor
+   * Prosedur countScore mengembalikan nilai integer berupa hasil perhitungan score
+   * I.S : Matcher terdefinisi
+   * F.S : atribut score terisi sesuai benar tidaknya jawaban user
    */
-  public int countScore() {
+  public void countScore() {
     if (keyAnswer.getType() == 1) {
       if (keyAnswer.getJawaban().equals(userAnswer)) {
         score = keyAnswer.getLevel()*10;
@@ -93,6 +94,5 @@ public class Matcher {
         score = keyAnswer.getLevel()*10;
       }
     }
-    return score;
   }
 }
