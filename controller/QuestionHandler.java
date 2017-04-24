@@ -167,7 +167,7 @@ public class QuestionHandler {
         }
     } else if (level == 3) {
       int indeksData = 0;
-      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl3.tc")));
+      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl3.txt")));
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
@@ -217,6 +217,120 @@ public class QuestionHandler {
           i++;
           tempAns = strLine.substring(i,strLine.length());
           data[indeksData] = new QuestionTyping(tempQuest, tempAns, 3);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+    } else if (level == 4) {
+      int indeksData = 0;
+      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl4.txt")));
+      String strLine;
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while(strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionGeneralKnowledge(tempQuest, tempAns, 4);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/MathLvl4.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while(strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionMath(tempQuest, tempAns, 4);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/TypingLvl4.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while(strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionTyping(tempQuest, tempAns, 4);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+    } else if (level == 5) {
+      int indeksData = 0;
+      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl5.txt")));
+      String strLine;
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while(strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionGeneralKnowledge(tempQuest, tempAns, 5);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/MathLvl5.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while(strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionMath(tempQuest, tempAns, 5);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/TypingLvl5.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while(strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionTyping(tempQuest, tempAns, 5);
           indeksData++;
         }
       } finally {
