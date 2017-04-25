@@ -18,6 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import controller.GameController;
+import controller.PlayGame;
+
 public class MainMenu extends JFrame {
 
   private JPanel contentPane;
@@ -61,6 +64,20 @@ public class MainMenu extends JFrame {
     btnPlay.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Yuk Main!");
+        dispose();
+        GamePlayer theView = new GamePlayer();
+        PlayGame theModel;
+        try {
+          theModel = new PlayGame();
+          GameController theControl = new GameController(theView,theModel);
+          theView.setVisible(true);
+          //theControl.game();
+        } catch (IOException e1) {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
+        
+        
       }
     });
     btnPlay.setForeground(Color.DARK_GRAY);

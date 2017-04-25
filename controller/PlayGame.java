@@ -18,6 +18,7 @@ public class PlayGame {
   private HighScore highscore;
   private int level;
   private boolean main;
+  private int index;
   
   /** Constructor PlayGame.
    * 
@@ -31,6 +32,35 @@ public class PlayGame {
     highscore.loadHighScore();
     questionhandler = new QuestionHandler(level);
     main = true;
+    
+  }
+  
+  public boolean isMain() {
+    return main;
+  }
+  
+  public void awalGame() throws IOException {
+    questionhandler.drawQuestion();
+  }
+  
+  public QuestionHandler getQueHand() {
+    return questionhandler;
+  }
+  
+  public void checkMatch(String jawabanUser,int index) {
+    matcher.setKeyAnswer(questionhandler.getData(index));
+    matcher.setUserAnswer(jawabanUser);
+    matcher.countScore();
+    player.setPoint(player.getPoint() + matcher.getScore());
+  }
+  
+  public Matcher getMatcher() {
+    return matcher;
+  }
+  
+  public void generateQueHand(int level) throws IOException {
+    questionhandler.setLevel(level);
+    questionhandler.drawQuestion();
   }
   
   /** JavaDoc.

@@ -86,7 +86,7 @@ public class HighscoreViewer extends JFrame {
     Image img2 = new ImageIcon(getClass().getResource("/firework.png")).getImage();
     lblNewLabel1.setIcon(new ImageIcon(img2));
     contentPane.add(lblNewLabel1);
-    
+   
     BufferedReader in = null;
     in = new BufferedReader(new FileReader("external_file/highscoreshow.txt"));
     String str;
