@@ -3,17 +3,20 @@ package view;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 
 public class HighscoreViewer extends JFrame {
@@ -40,25 +43,25 @@ public class HighscoreViewer extends JFrame {
    * Create the frame.
    */
   public HighscoreViewer() throws IOException {
-    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    setBounds(100, 100, 450, 399);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setBounds(100, 100, 479, 399);
     contentPane = new JPanel();
     contentPane.setBackground(Color.PINK);
     contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
     setContentPane(contentPane);
     contentPane.setLayout(null);
     
-    JLabel lblNewLabel = new JLabel("High Score");
-    lblNewLabel.setFont(new Font("Harrington", Font.PLAIN, 25));
-    lblNewLabel.setBounds(154, 24, 120, 37);
-    contentPane.add(lblNewLabel);
+    JLabel lblJudul = new JLabel("High Score");
+    lblJudul.setFont(new Font("Harrington", Font.BOLD, 25));
+    lblJudul.setBounds(154, 28, 120, 37);
+    contentPane.add(lblJudul);
     
     JTextArea txtHighScore = new JTextArea();
     txtHighScore.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 13));
-    txtHighScore.setBackground(Color.PINK);
+    txtHighScore.setBackground(new Color(255, 175, 175));
     txtHighScore.setEditable(false);
-    txtHighScore.setBounds(154, 85, 152, 241);
-    contentPane.add(txtHighScore);
+    txtHighScore.setBounds(152, 88, 133, 203);
+    contentPane.add(txtHighScore); 
     
     JButton btnBack = new JButton("Back");
     btnBack.addActionListener(new ActionListener() {
@@ -69,11 +72,23 @@ public class HighscoreViewer extends JFrame {
         viewMainMenu.setVisible(true);
       }
     });
-    btnBack.setBounds(175, 342, 117, 29);
+    btnBack.setBounds(162, 303, 117, 29);
     contentPane.add(btnBack);
     
+    JLabel lblTrophy = new JLabel("");
+    Image img = new ImageIcon(getClass().getResource("/trophy.png")).getImage();
+    lblTrophy.setIcon(new ImageIcon(img));
+    lblTrophy.setBounds(318, 6, 128, 128);
+    contentPane.add(lblTrophy);
+    
+    JLabel lblNewLabel1 = new JLabel("");
+    lblNewLabel1.setBounds(-135, -37, 614, 427);
+    Image img2 = new ImageIcon(getClass().getResource("/firework.png")).getImage();
+    lblNewLabel1.setIcon(new ImageIcon(img2));
+    contentPane.add(lblNewLabel1);
+    
     BufferedReader in = null;
-    in = new BufferedReader(new FileReader("src/controller/highscoreshow.txt"));
+    in = new BufferedReader(new FileReader("external_file/highscoreshow.txt"));
     String str;
     while ((str = in.readLine()) != null) {
       txtHighScore.append(str);

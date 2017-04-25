@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import model.Player;
 
 /**Real Class Player.
  * @author Alivia Dewi Parahita
@@ -162,9 +164,9 @@ public class HighScore {
   public void printToTxt() throws IOException {
     String text;
     String text2;
-    BufferedWriter output = new BufferedWriter(new FileWriter("src/controller/highscore.txt")) ;
+    BufferedWriter output = new BufferedWriter(new FileWriter("external_file/highscore.txt")) ;
     BufferedWriter output2 = new BufferedWriter(new 
-        FileWriter("src/controller/highscoreshow.txt")) ;
+        FileWriter("external_file/highscoreshow.txt")) ;
     if (tail != -1) {
       for (int i = 0; i <= tail; i++) {
         text = data[i].getName().concat("|").concat(String.valueOf(data[i].getPoint()));
