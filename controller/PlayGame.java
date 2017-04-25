@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 import model.Player;
 import model.Question;
@@ -16,6 +19,7 @@ public class PlayGame {
   private Matcher matcher;
   private QuestionHandler questionhandler;
   private HighScore highscore;
+  private ArrayList<Integer> questionScrambler;
   private int level;
   private boolean main;
   
@@ -30,6 +34,11 @@ public class PlayGame {
     highscore = new HighScore();
     highscore.loadHighScore();
     questionhandler = new QuestionHandler(level);
+    questionScrambler = new ArrayList<>();
+    for (int i = 0; i < 25; i++) {
+      questionScrambler.add(new Integer(i));
+    }
+    Collections.shuffle(questionScrambler);
     main = true;
   }
   
@@ -52,7 +61,7 @@ public class PlayGame {
     while (level < 5) {
       i = 0;
       while (main && i < 25) {
-        current = questionhandler.getData(i);
+        current = questionhandler.getData(questionScrambler.get(i));
         System.out.println(current.getPertanyaan());
         input = scan.next();
         matcher.setKeyAnswer(current);
@@ -71,3 +80,4 @@ public class PlayGame {
     System.out.println("skor anda: " + player.getPoint());
   }
 }
+
