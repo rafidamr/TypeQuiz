@@ -104,15 +104,7 @@ public class Matcher {
    * F.S : atribut score terisi sesuai benar tidaknya jawaban user
    */
   public void countScore() {
-    if (keyAnswer.getType() == 1) {
-      if (keyAnswer.getJawaban().equalsIgnoreCase(userAnswer)) {
-        score = keyAnswer.getLevel() * 10;
-        correct = true;
-      } else {
-        correct = false;
-        score = 0;
-      }
-    } else if (keyAnswer.getType() == 2) {
+    if (keyAnswer.getType() == 1 || keyAnswer.getType() == 2) {
       if (keyAnswer.getJawaban().equalsIgnoreCase(userAnswer)) {
         score = keyAnswer.getLevel() * 10;
         correct = true;
