@@ -2,7 +2,6 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -47,9 +46,8 @@ public class HighScore {
   
   /** Prosedur load dari HighScore.
     * Input data highscore dari file eksternal.
-    * @throws IOException 
-    * I.S : HighScore terdefinisi
-    * F.S : data pada file eksternal terinput ke HighScore
+    * I.S : HighScore terdefinisi.
+    * F.S : data pada file eksternal terinput ke HighScore.
     */
   public void loadHighScore() throws IOException {
     BufferedReader br = new BufferedReader(new FileReader("external_file/highscore.txt"));
