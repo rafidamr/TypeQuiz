@@ -1,12 +1,12 @@
-
-import model.HighScore;
-import model.Player;
-import model.Question;
+package controller;
 
 import java.io.IOException;
 import java.util.Scanner;
+import model.Player;
+import model.Question;
 
-/**Real Class Player.
+
+/**Real Class PlayGame.
  * @author M. Akmal Pratama
  *
  */
@@ -18,17 +18,25 @@ public class PlayGame {
   private HighScore highscore;
   private int level;
   private boolean main;
-
+  
+  /** Constructor PlayGame.
+   * 
+   *
+   */
   public PlayGame() throws IOException {
-      player = new Player();
-      matcher = new Matcher();
-      level = 1;
-      highscore = new HighScore();
-      highscore.loadHighScore();
-      questionhandler = new QuestionHandler(level);
-      main = true;
+    player = new Player();
+    matcher = new Matcher();
+    level = 1;
+    highscore = new HighScore();
+    highscore.loadHighScore();
+    questionhandler = new QuestionHandler(level);
+    main = true;
   }
-
+  
+  /** JavaDoc.
+   * 
+   *
+   */
   public void initGame() throws IOException {
     questionhandler.drawQuestion();
     int count = 0;
@@ -60,6 +68,6 @@ public class PlayGame {
       }
     }
     player.setPoint(totalScore);
-    System.out.println("skor anda: "+player.getPoint());
+    System.out.println("skor anda: " + player.getPoint());
   }
 }

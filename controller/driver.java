@@ -1,3 +1,5 @@
+package controller;
+
 import model.Player;
 
 import java.io.IOException;
