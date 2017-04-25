@@ -1,30 +1,32 @@
+package controller;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import model.Question;
 import model.QuestionGeneralKnowledge;
 import model.QuestionMath;
 import model.QuestionTyping;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
-  /**Real Class QuestionHandler
+/**Real Class QuestionHandler.
   * @author Vigor Akbar
   *
   */
-  public class QuestionHandler {
+public class QuestionHandler {
   /**
-   * Attribut data adalah sebuah array of Question
+   * Attribut data adalah sebuah array of Question.
    * digunakan untuk menyimpan pertanyaan dari file eksternal
    */
   private Question[] data;
   /**
-   * Attribut level adalah sebuah integer
+   * Attribut level adalah sebuah integer.
    * digunakan untuk menyimpan level dari Question yang akan di load
    */
   private int level;
 
   /**
-   * Constructor dengan parameter dari QuestionHandler
+   * Constructor dengan parameter dari QuestionHandler.
    * Menghidupkan objek QuestionHandler
    * @param level int adalah level dari Question yang ingin di load
    */
@@ -37,7 +39,7 @@ import java.io.IOException;
   }
 
   /**
-   * Getter Question dari data
+   * Getter Question dari data.
    * @param i = index dari data yang ingin di ambil
    * @return Question : Question yabg ingin diambil
    */
@@ -46,7 +48,7 @@ import java.io.IOException;
   }
 
     /**
-     * Setter int dari level
+     * Setter int dari level.
      * @param level = nilai yang ingin di set kedalam level
      */
   public void setLevel(int level) {
@@ -61,128 +63,131 @@ import java.io.IOException;
   public void drawQuestion() throws IOException {
     if (level == 1) {
       int indeksData = 0;
-      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl1.txt")));
-        String strLine;
-        try {
-          while ((strLine = br.readLine()) != null) {
-            String tempQuest;
-            String tempAns;
-            int i = 0;
-            while(strLine.charAt(i) != '|') {
-              i++;
-            }
-            tempQuest = strLine.substring(0,i);
-            i++;
-            tempAns = strLine.substring(i,strLine.length());
-            data[indeksData] = new QuestionGeneralKnowledge(tempQuest, tempAns, 1);
-            indeksData++;
-          }
-        } finally {
-            br.close();
-        }
-        br = new BufferedReader((new FileReader("external_file/MathLvl1.txt")));
-        try {
-          while ((strLine = br.readLine()) != null) {
-            String tempQuest;
-            String tempAns;
-            int i = 0;
-            while(strLine.charAt(i) != '|') {
-              i++;
-            }
-            tempQuest = strLine.substring(0,i);
-            i++;
-            tempAns = strLine.substring(i,strLine.length());
-            data[indeksData] = new QuestionMath(tempQuest, tempAns, 1);
-            indeksData++;
-          }
-        } finally {
-            br.close();
-        }
-        br = new BufferedReader((new FileReader("external_file/TypingLvl1.txt")));
-        try {
-          while ((strLine = br.readLine()) != null) {
-            String tempQuest;
-            String tempAns;
-            int i = 0;
-            while(strLine.charAt(i) != '|') {
-              i++;
-            }
-            tempQuest = strLine.substring(0,i);
-            i++;
-            tempAns = strLine.substring(i,strLine.length());
-            data[indeksData] = new QuestionTyping(tempQuest, tempAns, 1);
-            indeksData++;
-          }
-        } finally {
-          br.close();
-        }
-    } else if (level == 2) {
-      int indeksData = 0;
-      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl2.txt")));
-        String strLine;
-        try {
-          while ((strLine = br.readLine()) != null) {
-            String tempQuest;
-            String tempAns;
-            int i = 0;
-            while(strLine.charAt(i) != '|') {
-              i++;
-            }
-            tempQuest = strLine.substring(0,i);
-            i++;
-            tempAns = strLine.substring(i,strLine.length());
-            data[indeksData] = new QuestionGeneralKnowledge(tempQuest, tempAns, 2);
-            indeksData++;
-          }
-        } finally {
-            br.close();
-        }
-        br = new BufferedReader((new FileReader("external_file/MathLvl2.txt")));
-        try {
-            while ((strLine = br.readLine()) != null) {
-                String tempQuest;
-                String tempAns;
-                int i = 0;
-                while(strLine.charAt(i) != '|') {
-                    i++;
-                }
-                tempQuest = strLine.substring(0,i);
-                i++;
-                tempAns = strLine.substring(i,strLine.length());
-                data[indeksData] = new QuestionMath(tempQuest, tempAns, 2);
-                indeksData++;
-            }
-        } finally {
-            br.close();
-        }
-        br = new BufferedReader((new FileReader("external_file/TypingLvl2.txt")));
-        try {
-            while ((strLine = br.readLine()) != null) {
-                String tempQuest;
-                String tempAns;
-                int i = 0;
-                while(strLine.charAt(i) != '|') {
-                    i++;
-                }
-                tempQuest = strLine.substring(0,i);
-                i++;
-                tempAns = strLine.substring(i,strLine.length());
-                data[indeksData] = new QuestionTyping(tempQuest, tempAns, 2);
-                indeksData++;
-            }
-        } finally {
-            br.close();
-        }
-    } else if (level == 3) {
-      int indeksData = 0;
-      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl3.txt")));
+      BufferedReader br = new BufferedReader((new 
+          FileReader("external_file/GeneralKnowledgeLvl1.txt")));
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());    
+          data[indeksData] = new QuestionGeneralKnowledge(tempQuest, tempAns, 1);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/MathLvl1.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while (strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionMath(tempQuest, tempAns, 1);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/TypingLvl1.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while (strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionTyping(tempQuest, tempAns, 1);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+    } else if (level == 2) {
+      int indeksData = 0;
+      BufferedReader br = new BufferedReader((new 
+          FileReader("external_file/GeneralKnowledgeLvl2.txt")));
+      String strLine;
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while (strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionGeneralKnowledge(tempQuest, tempAns, 2);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/MathLvl2.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while (strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionMath(tempQuest, tempAns, 2);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+      br = new BufferedReader((new FileReader("external_file/TypingLvl2.txt")));
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while (strLine.charAt(i) != '|') {
+            i++;
+          }
+          tempQuest = strLine.substring(0,i);
+          i++;
+          tempAns = strLine.substring(i,strLine.length());
+          data[indeksData] = new QuestionTyping(tempQuest, tempAns, 2);
+          indeksData++;
+        }
+      } finally {
+        br.close();
+      }
+    } else if (level == 3) {
+      int indeksData = 0;
+      BufferedReader br = new BufferedReader((new 
+          FileReader("external_file/GeneralKnowledgeLvl3.txt")));
+      String strLine;
+      try {
+        while ((strLine = br.readLine()) != null) {
+          String tempQuest;
+          String tempAns;
+          int i = 0;
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -200,7 +205,7 @@ import java.io.IOException;
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -218,7 +223,7 @@ import java.io.IOException;
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -232,14 +237,15 @@ import java.io.IOException;
       }
     } else if (level == 4) {
       int indeksData = 0;
-      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl4.txt")));
+      BufferedReader br = new BufferedReader((new
+          FileReader("external_file/GeneralKnowledgeLvl4.txt")));
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -257,7 +263,7 @@ import java.io.IOException;
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -275,7 +281,7 @@ import java.io.IOException;
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -289,14 +295,15 @@ import java.io.IOException;
       }
     } else if (level == 5) {
       int indeksData = 0;
-      BufferedReader br = new BufferedReader((new FileReader("external_file/GeneralKnowledgeLvl5.txt")));
+      BufferedReader br = new BufferedReader((new 
+          FileReader("external_file/GeneralKnowledgeLvl5.txt")));
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -314,7 +321,7 @@ import java.io.IOException;
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
@@ -332,7 +339,7 @@ import java.io.IOException;
           String tempQuest;
           String tempAns;
           int i = 0;
-          while(strLine.charAt(i) != '|') {
+          while (strLine.charAt(i) != '|') {
             i++;
           }
           tempQuest = strLine.substring(0,i);
