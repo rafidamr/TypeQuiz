@@ -22,6 +22,7 @@ public class PlayGame {
   private ArrayList<Integer> questionScrambler;
   private int level;
   private boolean main;
+  private QuestionTimer questionTimer;
   
   /** Constructor PlayGame.
    * 
@@ -39,6 +40,7 @@ public class PlayGame {
       questionScrambler.add(new Integer(i));
     }
     Collections.shuffle(questionScrambler);
+    questionTimer = new QuestionTimer(5);
     main = true;
   }
   
@@ -58,16 +60,34 @@ public class PlayGame {
     System.out.println("Masukkan username:");
     input = scan.next();
     player.setName(input);
-    while (level < 5) {
+    while (main && level <= 5) {
       i = 0;
       while (main && i < 25) {
         current = questionhandler.getData(questionScrambler.get(i));
         System.out.println(current.getPertanyaan());
+        if (!questionTimer.getStarted()) {
+          questionTimer.start();
+        } else {
+          questionTimer.setInterval(5);
+        }
         input = scan.next();
         matcher.setKeyAnswer(current);
         matcher.setUserAnswer(input);
         matcher.countScore();
-        totalScore += matcher.getScore();
+        questionTimer.setCorrect(matcher.getCorrect());
+        System.out.println(matcher.getCorrect());
+        main = !questionTimer.getEnd();
+        while(main && !matcher.getCorrect()) {
+          System.out.println("salah!");
+          input = scan.next();
+          matcher.setUserAnswer(input);
+          matcher.countScore();
+          questionTimer.setCorrect(matcher.getCorrect());
+          main = !questionTimer.getEnd();
+        }
+        if (main) {
+          totalScore += matcher.getScore();
+        }
         i++;
       }
       level++;
@@ -80,4 +100,3 @@ public class PlayGame {
     System.out.println("skor anda: " + player.getPoint());
   }
 }
-
