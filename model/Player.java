@@ -20,7 +20,7 @@ public class Player {
    */
   public Player() {
     name = "null";
-    point = -999;
+    point = 0;
   }
   
   /** Getter nama dari Player.

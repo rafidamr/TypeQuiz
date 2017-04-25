@@ -1,14 +1,17 @@
 package view;
+/**Real view Class MainMenu.
+ * @author Alivia Dewi Parahita
+ *
+ */
 
+import controller.GameController;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.io.IOException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,8 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import controller.GameController;
-import controller.PlayGame;
 
 public class MainMenu extends JFrame {
 
@@ -65,13 +66,8 @@ public class MainMenu extends JFrame {
       public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "Yuk Main!");
         dispose();
-        GamePlayer theView = new GamePlayer();
-        PlayGame theModel;
         try {
-          theModel = new PlayGame();
-          GameController theControl = new GameController(theView,theModel);
-          theView.setVisible(true);
-          //theControl.game();
+          GameController theControl = new GameController();
         } catch (IOException e1) {
           // TODO Auto-generated catch block
           e1.printStackTrace();

@@ -1,70 +1,142 @@
 package controller;
+/**Real controller Class GameController.
+ * @author Alivia Dewi Parahita
+ *
+ */
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+
 import view.GamePlayer;
+import view.MainMenu;
 
 public class GameController {
   private GamePlayer theView;
-  private GamePlayer theView1;
+  //private GamePlayer theView1;
   private PlayGame theModel;
-  private int index,level;
+  private int index;
+  private int level;
+  private boolean main = true;
+  private Timer time;
+  //private Timer timeShow;
+  //private int counter;
   
-  public GameController(GamePlayer theView, PlayGame theModel) throws IOException {
-    this.theView = theView;
-    this.theModel = theModel;
-    /*index = 0;
+  public GameController() throws IOException {
+    theView = new GamePlayer();
+    theModel = new PlayGame();
+    theView.setVisible(true);
+    
+    index = 0;
     level = 1;
     
-    theModel.generateQueHand(level);
-    this.theView.addGameListener(new GameListener());
-    index = 1;
-    this.theView.addGameListener(new GameListener());
-    index = 2;
-    this.theView.addGameListener(new GameListener());
-    index = 3;
-    this.theView.addGameListener(new GameListener());
-    index = 4;
-    this.theView.addGameListener(new GameListener());
-    index = 5;*/
-    
-   /* theModel.awalGame();
-    theView.setQuestion(theModel.getQueHand().getData(0).getPertanyaan());
-    String jawab = theView.getAnswer();
-    System.out.println(jawab);
-    theModel.checkMatch(jawab, 0);*/
-    /*int level = 1;
-    int index = 0;
-    boolean jawabBenar = false;
-    
-    while ((level <= 5) && (theModel.isMain())) {
-      theModel.getQueHand().setLevel(level);
-      theModel.getQueHand().drawQuestion();
-      while ((theModel.isMain()) && (index < 25)) {
-        while (!(jawabBenar)) {
-          theView.setQuestion(theModel.getQueHand().getData(index).getPertanyaan());
-          String jawab = theView.getAnswer();
-          theModel.checkMatch(jawab, index);
-          if (theModel.getMatcher().getScore() != 0) {
-            jawabBenar = true;
-          }
+    time = new Timer(10000, new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        main = false;
+        String name = JOptionPane.showInputDialog(null, "Input your name");
+        if (name == null) {
+          name = "Anonymous";
         }
-        index++;
+        theModel.getPlayer().setName(name);
+        theModel.getHighscore().add(theModel.getPlayer());
+        try {
+          theModel.getHighscore().printToTxt();
+        } catch (IOException e1) {
+          // TODO Auto-generated catch block
+          e1.printStackTrace();
+        }
+        theView.dispose();
+        MainMenu viewMainMenu;
+        viewMainMenu = new MainMenu();
+        viewMainMenu.setVisible(true);
       }
-      level++;
-    }*/
+      
+    });
+    /*counter = 10;
+    JLabel jl = new JLabel();
+    jl.setText(Integer.toString(counter));
+    jl.setLocation(10, 10);
+    jl.setVisible(true);
+    theView.add(jl);
+    timeShow = new Timer(1000, new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        --counter;
+        jl.setText(Integer.toString(counter));
+      }
+      
+    });*/
+    time.setRepeats(false);
+    //timeShow.setRepeats(true);
+    theModel.generateQueHand(level);
+    time.start();
+    //timeShow.start();
+    theView.setQuestion(theModel.getQueHand().getData(index).getPertanyaan());
+    this.theView.addGameListener(new GameListener());
     
+    if (!main) {
+      theView.dispose();
+    }
   }
   
   class GameListener implements ActionListener {
     public void actionPerformed(ActionEvent arg0) {
-      theView.setQuestion(theModel.getQueHand().getData(index).getPertanyaan());
+      boolean jawabBenar = false;
       String jawab = theView.getAnswer();
       System.out.println(jawab);
       theModel.checkMatch(jawab, index);
+      if (theModel.getMatcher().getScore() != 0) {
+        jawabBenar = true;
       }
+      if (jawabBenar) {
+        if (index + 1 != 25) {
+          index++;
+        } else if (level != 5) {
+          level++;
+          try {
+            theModel.generateQueHand(level);
+          } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+          index = 0;
+        } else {
+          main = false;
+        }
+        theModel.getPlayer().setPoint(theModel.getPlayer().getPoint() 
+            + theModel.getMatcher().getScore());
+        
+      }
+      theView.setQuestion(theModel.getQueHand().getData(index).getPertanyaan());
+      if (jawabBenar) {
+        time.restart();
+      }
+      theView.setAnswer("");
+    }
+  }
+  
+  public boolean isMain() {
+    return main;
+  }
+  
+  public void setLevel(int levelInput) {
+    //while (!available) {}
+    //available = true;
+    level = levelInput;
+  }
+  
+  public void setIndex(int indexInput) {
+    //while (!available) {}
+    //available = true;
+    index = indexInput;
   }
   
   public int getLevel() {
@@ -72,38 +144,21 @@ public class GameController {
   }
   
   public int getIndex() {
+    //while (available) {}
+    //available = false;
     return index;
   }
   
   public GamePlayer getView() {
+    //while (available) {}
+    //available = false;
     return theView;
   }
   
   public PlayGame getModel() {
+    //while (available) {}
+    //available = false;
     return theModel;
-  }
-  
-  public void game() throws IOException {
-    int level = 1;
-    int index = 0;
-    boolean jawabBenar = false;
-    
-    while ((level <= 5) && (theModel.isMain())) {
-      theModel.getQueHand().setLevel(level);
-      theModel.getQueHand().drawQuestion();
-      while ((theModel.isMain()) && (index < 25)) {
-        while (!(jawabBenar)) {
-          theView.setQuestion(theModel.getQueHand().getData(index).getPertanyaan());
-          String jawab = theView.getAnswer();
-          theModel.checkMatch(jawab, index);
-          if (theModel.getMatcher().getScore() != 0) {
-            jawabBenar = true;
-          }
-        }
-        index++;
-      }
-      level++;
-    }
   }
   
 }

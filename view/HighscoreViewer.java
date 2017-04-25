@@ -1,4 +1,8 @@
 package view;
+/**Real view Class HighScoreViewer.
+ * @author Alivia Dewi Parahita
+ *
+ */
 
 import java.awt.Color;
 import java.awt.EventQueue;

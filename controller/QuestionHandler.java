@@ -47,10 +47,10 @@ public class QuestionHandler {
     return data[i];
   }
 
-    /**
-     * Setter int dari level.
-     * @param level = nilai yang ingin di set kedalam level
-     */
+  /**
+    * Setter int dari level.
+    * @param level = nilai yang ingin di set kedalam level
+    */
   public void setLevel(int level) {
     this.level = level;
   }
@@ -61,6 +61,8 @@ public class QuestionHandler {
    * F.S : atribut data berisi question sesuai file eksternal
    */
   public void drawQuestion() throws IOException {
+    String tempQuest;
+    String tempAns;
     if (level == 1) {
       int indeksData = 0;
       BufferedReader br = new BufferedReader((new 
@@ -68,8 +70,6 @@ public class QuestionHandler {
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -86,8 +86,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/MathLvl1.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -104,8 +102,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/TypingLvl1.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -126,8 +122,6 @@ public class QuestionHandler {
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -144,8 +138,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/MathLvl2.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -162,8 +154,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/TypingLvl2.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -184,8 +174,6 @@ public class QuestionHandler {
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -202,8 +190,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/MathLvl3.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -220,8 +206,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/TypingLvl3.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -242,8 +226,6 @@ public class QuestionHandler {
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -260,8 +242,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/MathLvl4.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -278,8 +258,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/TypingLvl4.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -300,8 +278,6 @@ public class QuestionHandler {
       String strLine;
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -318,8 +294,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/MathLvl5.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;
@@ -336,8 +310,6 @@ public class QuestionHandler {
       br = new BufferedReader((new FileReader("external_file/TypingLvl5.txt")));
       try {
         while ((strLine = br.readLine()) != null) {
-          String tempQuest;
-          String tempAns;
           int i = 0;
           while (strLine.charAt(i) != '|') {
             i++;

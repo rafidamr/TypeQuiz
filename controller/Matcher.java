@@ -24,11 +24,6 @@ public class Matcher {
   private int score;
 
   /**
-   * Atribut correct adalah boolean kebenaran jawaban user
-   */
-  private boolean correct;
-
-  /**
    * Constructor tanpa parameter dari Matcher.
    * Menghidupkan objek Matcher.
    */
@@ -75,14 +70,6 @@ public class Matcher {
   }
 
   /**
-   * Getter dari correct
-   * @return boolean : nilai kebenaran jawaban
-   */
-  public boolean getCorrect() {
-    return correct;
-  }
-
-  /**
    * Setter dari keyAnswer.
    * @param keyAnswer : Question yang akan di masukkan ke keyAnswer
    */
@@ -104,21 +91,23 @@ public class Matcher {
    * F.S : atribut score terisi sesuai benar tidaknya jawaban user
    */
   public void countScore() {
-    if (keyAnswer.getType() == 1 || keyAnswer.getType() == 2) {
+    if (keyAnswer.getType() == 1) {
+      if (keyAnswer.getJawaban().equals(userAnswer)) {
+        score = keyAnswer.getLevel() * 10;
+      } else {
+        score = 0;
+      }
+    } else if (keyAnswer.getType() == 2) {
       if (keyAnswer.getJawaban().equalsIgnoreCase(userAnswer)) {
         score = keyAnswer.getLevel() * 10;
-        correct = true;
       } else {
-        correct = false;
         score = 0;
       }
     } else {
-      if (keyAnswer.getJawaban().equalsIgnoreCase(userAnswer)) {
+      if (keyAnswer.getJawaban().equals(userAnswer)) {
         score = keyAnswer.getLevel() * 10;
-        correct = true;
       } else {
         score = 0;
-        correct = false;
       }
     }
   }
