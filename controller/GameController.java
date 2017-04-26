@@ -26,6 +26,10 @@ public class GameController {
   //private Timer timeShow;
   //private int counter;
   
+  /** Constructor dari GameController.
+   * Menghidupkan object GameController.
+   * 
+   */
   public GameController() throws IOException {
     theView = new GamePlayer();
     theModel = new PlayGame();
@@ -110,6 +114,23 @@ public class GameController {
           index = 0;
         } else {
           main = false;
+          JOptionPane.showMessageDialog(null, "Congratulation! You Win!!");
+          String name = JOptionPane.showInputDialog(null, "Input your name");
+          if (name == null) {
+            name = "Anonymous";
+          }
+          theModel.getPlayer().setName(name);
+          theModel.getHighscore().add(theModel.getPlayer());
+          try {
+            theModel.getHighscore().printToTxt();
+          } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+          }
+          theView.dispose();
+          MainMenu viewMainMenu;
+          viewMainMenu = new MainMenu();
+          viewMainMenu.setVisible(true);
         }
         theModel.getPlayer().setPoint(theModel.getPlayer().getPoint() 
             + theModel.getMatcher().getScore());

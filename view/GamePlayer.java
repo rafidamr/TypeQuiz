@@ -13,15 +13,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 public class GamePlayer extends JFrame {
 
   private JPanel contentPane;
-  private JTextField textFieldQuestion;
   private JTextField textFieldAnswer;
   private JButton btnSubmit;
+  private JTextPane txtpnQuestion;
 
   /**
    * Launch the application.
@@ -51,15 +51,6 @@ public class GamePlayer extends JFrame {
     setContentPane(contentPane);
     contentPane.setLayout(null);
     
-    textFieldQuestion = new JTextField();
-    textFieldQuestion.setHorizontalAlignment(SwingConstants.CENTER);
-    textFieldQuestion.setEditable(false);
-    textFieldQuestion.setBackground(Color.PINK);
-    textFieldQuestion.setText("Question Here");
-    textFieldQuestion.setBounds(48, 65, 364, 44);
-    contentPane.add(textFieldQuestion);
-    textFieldQuestion.setColumns(10);
-    
     JLabel lblAnswer = new JLabel("Your Answer");
     lblAnswer.setBounds(179, 121, 86, 16);
     contentPane.add(lblAnswer);
@@ -73,6 +64,13 @@ public class GamePlayer extends JFrame {
     btnSubmit.setBounds(162, 187, 117, 29);
     contentPane.add(btnSubmit);
     
+    txtpnQuestion = new JTextPane();
+    txtpnQuestion.setBackground(Color.PINK);
+    txtpnQuestion.setEditable(false);
+    txtpnQuestion.setText("Question Here");
+    txtpnQuestion.setBounds(49, 54, 364, 45);
+    contentPane.add(txtpnQuestion);
+    
   }
   
   public String getAnswer() {
@@ -80,7 +78,7 @@ public class GamePlayer extends JFrame {
   }
   
   public void setQuestion(String inputQuestion) {
-    textFieldQuestion.setText(inputQuestion);
+    txtpnQuestion.setText(inputQuestion);
   }
   
   public void setAnswer(String inputAnswer) {
