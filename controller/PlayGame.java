@@ -36,14 +36,21 @@ public class PlayGame {
     return main;
   }
   
-  public void awalGame() throws IOException {
-    questionhandler.drawQuestion();
-  }
-  
+  /** Getter QuestionHandler dari PlayGame.
+   * 
+   * @return QuestionHandler : questionhandler dari PlayGame
+   */
   public QuestionHandler getQueHand() {
     return questionhandler;
   }
   
+  /**  Prosedur yang memanggil string matchin jawabanUser dgn kunciJawaban dari PlayGame.
+   * I.S : PlayGame terdefinisi
+   * F.S : atribut score dari player berubah sesuai dengan score yang didapat
+   *  
+   * @param jawabanUser String adalah input jawaban dari user
+   * @param index integer adalah index pertanyaan yang ingin diperiksa
+   */
   public void checkMatch(String jawabanUser,int index) {
     matcher.setKeyAnswer(questionhandler.getData(index));
     matcher.setUserAnswer(jawabanUser);
@@ -51,20 +58,38 @@ public class PlayGame {
     player.setPoint(player.getPoint() + matcher.getScore());
   }
   
+  /** Getter Matcher dari PlayGame.
+   * 
+   * @return Matcher: matcher dari PlayGame
+   */
   public Matcher getMatcher() {
     return matcher;
   }
   
+  /** Getter Player dari PlayGame.
+   * 
+   * @return Player: player dari PlayGame
+   */
   public Player getPlayer() {
     return player;
   }
   
+  /** Getter HighScore dari PlayGame.
+   * 
+   * @return HighScore: highscore dari PlayGame
+   */
   public HighScore getHighscore() {
     return highscore;
   }
   
-  public void generateQueHand(int level) throws IOException {
-    questionhandler.setLevel(level);
+  /**  Prosedur yang me-generate pertanyaan dari PlayGame.
+   * I.S : PlayGame terdefinisi
+   * F.S : atribut questionhandler berisi dengan pertanyaan sesuai input level
+   * 
+   * @param levelInput integer adalah input level dari user
+   */
+  public void generateQueHand(int levelInput) throws IOException {
+    questionhandler.setLevel(levelInput);
     questionhandler.drawQuestion();
   }
   

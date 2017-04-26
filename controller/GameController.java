@@ -7,21 +7,31 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-
 import view.GamePlayer;
 import view.MainMenu;
 
 public class GameController {
+  /** Attribut theView yang adalah View dari Game.
+   */
   private GamePlayer theView;
-  //private GamePlayer theView1;
+  /** Attribut theModel yang adalah Model dari Game.
+   */
   private PlayGame theModel;
+  /** Attribut index yang adalah int yang menandakan pertanyaan telah sampai
+   * indeks ke berapa dari Game.
+   */
   private int index;
+  /** Attribut level yang adalah int yang menandakan telah mencapai level
+   *  ke berapa dari Game.
+   */
   private int level;
+  /** Attribut main yang adalah boolean apakah game masih bermain atau tidak.
+   */
   private boolean main = true;
+  /** Attribut timer yang adalah Timer dari Game.
+   */
   private Timer time;
   //private Timer timeShow;
   //private int counter;
@@ -91,7 +101,15 @@ public class GameController {
     }
   }
   
+  /** Class GameListener.
+   * Penanganan dari tombol yang di berikan Action oleh user.
+   * 
+   */
   class GameListener implements ActionListener {
+    
+    /** Prosedur actionPerformed.
+     * @Overide
+     */
     public void actionPerformed(ActionEvent arg0) {
       boolean jawabBenar = false;
       String jawab = theView.getAnswer();
@@ -148,34 +166,62 @@ public class GameController {
     return main;
   }
   
+  /** Setter level dari Game.
+   * I.S : GameController terdefinisi
+   * F.S : atribut level game berubah sesuai input user
+   * 
+   * @param levelInput integer adalah input leveldari user
+   */
   public void setLevel(int levelInput) {
     //while (!available) {}
     //available = true;
     level = levelInput;
   }
   
+  /** Setter index dari Game.
+   * I.S : GameController terdefinisi
+   * F.S : atribut index game berubah sesuai input user
+   * 
+   * @param indexInput integer adalah input index dari user
+   */
   public void setIndex(int indexInput) {
     //while (!available) {}
     //available = true;
     index = indexInput;
   }
   
+  /** Getter level dari Game.
+   * 
+   * @return integer : level dari Game
+   */
   public int getLevel() {
     return level;
   }
   
+  /** Getter index dari Game.
+   * 
+   * @return integer : indeks pertanyaan dari Game
+   */
   public int getIndex() {
     //while (available) {}
     //available = false;
     return index;
   }
   
+  /** Getter View dari Game.
+   * 
+   * @return GamePlayer : view dari Game
+   */
   public GamePlayer getView() {
     //while (available) {}
     //available = false;
     return theView;
   }
   
+  /** Getter Model dari Game.
+   * 
+   * @return PlayGame : model dari Game
+   */
   public PlayGame getModel() {
     //while (available) {}
     //available = false;
